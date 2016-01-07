@@ -19,15 +19,15 @@ export function addRoom(state=ININIAL_STATE, room){
 
 export function removeRoom(state, {id, user}){
     const rooms = state.get("rooms");
-    console.log(user);
+
     var index = rooms.findIndex(r => r.get("id") === id);
-    console.log(index);
+
     if(index == -1 || (rooms.getIn([index,"owner"])!==user)){
         console.log("不能删除");
         return state;
     }
     const a = state.update("rooms", rooms=>rooms.splice(index, 1));
-    console.log("aaaa");
+
     return a;
 
 }
